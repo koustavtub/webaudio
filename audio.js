@@ -1,54 +1,43 @@
-
-var WebAudioDemo = {
-};
-
+var WebAudioDemo = {};
 // Gain node needs to be mutated 
 WebAudioDemo.gainNode = null;
-// define audio context
+// Define audio context
 var context = new (window.AudioContext || window.webkitAudioContext)(); 
 // Webkit/blink browsers need prefix, Safari won't work without window.
-
 
 WebAudioDemo.createAudio=function () {
 	if (!context.createGain)
 			 context.createGain = context.createGainNode;
   	this.gainNode = context.createGain();
 	// Create gain node
-			 this.gainNode = context.createGain();
+	this.gainNode = context.createGain();
 	// Connect gain node to context (output)
-			this.gainNode.connect(context.destination);
-			// Add handler for play button
-			play(context, this.gainNode,'seq');
+	this.gainNode.connect(context.destination);
+	// Add handler for play button
+	play(context, this.gainNode,'seq');
 
-			//node.gain.value=0.5;
-
-		
-		}
+}
+//Creating Another one for single Note
 WebAudioDemo.oneNote=function (freq) {
 	if (!context.createGain)
-			 context.createGain = context.createGainNode;
+		context.createGain = context.createGainNode;
   	this.gainNode = context.createGain();
 	// Create gain node
-			 this.gainNode = context.createGain();
+	 this.gainNode = context.createGain();
 	// Connect gain node to context (output)
-			this.gainNode.connect(context.destination);
-			// Add handler for play button
-			play(context, this.gainNode,freq);
+	this.gainNode.connect(context.destination);
+	// Add handler for play button
+	play(context, this.gainNode,freq);
 
-		
+}
 
-		
-		}
-
-		
 WebAudioDemo.changeVolume = function(element) {
 			var volume = element.value;
 			var fraction = parseInt(element.value) / parseInt(element.max);
 			// Let's use an x*x curve (x-squared) since simple linear (x) does not sound as good.
 			 this.gainNode.gain.value = fraction * fraction;
 		}
-
-		function play(context, node,type) {
+function play(context, node,type) {
 			// Get current time in seconds
 			var startTime = context.currentTime;
 			// Set duration in seconds 
@@ -72,7 +61,7 @@ WebAudioDemo.changeVolume = function(element) {
 
 		}
 
-		function playNote(context, node, freq, startTime, duration) {
+function playNote(context, node, freq, startTime, duration) {
 
 			// Get sample rate
 			var rate = context.sampleRate;
@@ -107,14 +96,14 @@ WebAudioDemo.changeVolume = function(element) {
 
 			// Create audio source
 			var source = context.createBufferSource();
-			// Set buffer to our created one
+			// Set buffer to our created one (N.B: You can use some preset ones too)
 			source.buffer = buffer;
 			// Connect to gain node
 			source.connect(node);
 			// Play audio source at startTime
 			source.start(startTime);
 
-		}
+}
         
  /* 
   * Breakout Game Script (Modified by Koustav Ray to add sound on collision)
