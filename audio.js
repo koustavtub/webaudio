@@ -116,7 +116,15 @@ WebAudioDemo.changeVolume = function(element) {
 
 		}
         
- /* Game Script */
+ /* 
+  * Breakout Game Script (Modified by Koustav Ray to add sound on collision)
+  *
+  * Original game by: Andrzej Mazur
+  * https://jsfiddle.net/end3r/9temh0ta/
+  * 
+  * Tutorial for game: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
+  *
+  */
 var canvas = document.getElementById("myCanvas");
 var canvasContainer=document.getElementById("game");
 var ctx = canvas.getContext("2d");
@@ -187,7 +195,7 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
-                    WebAudioDemo.oneNote(1400));
+                    WebAudioDemo.oneNote(1500);
                     if(lives>1 && score == brickRowCount*brickColumnCount) {
                         canvasContainer.innerHTML=winText;
                        
@@ -201,7 +209,7 @@ function collisionDetection() {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "rgb(255, 0, 75)";
     ctx.fill();
     ctx.closePath();
 }
