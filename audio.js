@@ -184,7 +184,7 @@ function collisionDetection() {
                     b.status = 0;
                     score++;
                     WebAudioDemo.oneNote(1500);
-                    if(lives>1 && score == brickRowCount*brickColumnCount) {
+                    if(lives>0 && score == brickRowCount*brickColumnCount) {
                         canvasContainer.innerHTML=winText;
                        
                     }
