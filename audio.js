@@ -46,8 +46,7 @@ function play(context, node,type) {
 			var speed = 0.35;
 		if(type==="seq"){
 			// Sequence of frequencies
-			var sequence = [ 262, 294, 330, 349, 392, 440, 494, 494, 440, 392,
-					349, 330, 294, 262 ];
+			var sequence = [ 261.6, 293.7, 329.6, 349.2, 392, 440, 493.9,523.2, 523.2, 493.9, 440, 392, 349.2, 329.6, 293.7, 261.6];
 
 			for (var i = 0; i < sequence.length; i++) {
 
